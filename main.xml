@@ -1,38 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:openDrawer="start"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:openDrawer="start">
 
-    <include
-        layout="@layout/activity_main_content"/>
+    <!-- Main content layout -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/loveRecyclerId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:clipToPadding="false"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:scrollbars="vertical"
+            android:layout_marginTop="20dp">
+        </androidx.recyclerview.widget.RecyclerView>
+        
+        <!-- Include other content if needed -->
+        <include
+            layout="@layout/activity_main_content"/>
+    </FrameLayout>
+
+    <!-- Navigation drawer -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationViewId"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_gravity="start"
         app:menu="@menu/drawer_items"
         app:headerLayout="@layout/drawer_header"
         app:dividerInsetStart="55dp"
-        app:itemIconPadding="30dp"
-        android:layout_gravity="start"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/loveRecyclerId"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:clipToPadding="false"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:scrollbars="vertical"
-        android:layout_marginTop="20dp">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
+        app:itemIconPadding="30dp"/>
+    
 </androidx.drawerlayout.widget.DrawerLayout>
